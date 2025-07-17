@@ -8,22 +8,31 @@ const clearBtn = document.getElementById('clear-btn');
 
 
 let todo = JSON.parse(localStorage.getItem('addTodo')) || [];
+
+
 if(!Array.isArray(todo)){
     todo =[];
 }
 
 displayTodo()
 
+
 addItemBtn.addEventListener('click', ()=>{
 
-todo.push(todoEl.value.trim().reverse());
+const newItem = todoEl.value.trim();
 
-
- displayTodo()
+ if(newItem !==''){
+    todo.unshift(newItem)
+    localStorage.setItem('addTodo', JSON.stringify(todo))
+    displayTodo()
     
- todoEl.value = '';
+     todoEl.value = '';
 
- localStorage.setItem('addTodo', JSON.stringify(todo))
+    
+ }
+
+ 
+
 
 
 
@@ -34,6 +43,7 @@ todo.push(todoEl.value.trim().reverse());
 function displayTodo(){
     todoItem.innerHTML = ``;
 
+
     todo.forEach((todos,index) => {
         const li = document.createElement('li');
 
@@ -43,10 +53,12 @@ function displayTodo(){
             <p>${todos} <i class="fa-solid fa-trash" onClick = "deleteBtn(${index})"></i></p>
             
         `
+        
         todoItem.appendChild(li)
 
 
     });
+    
     
 
 
