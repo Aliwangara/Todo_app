@@ -1,0 +1,98 @@
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'roboto', sans-serif;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    background:linear-gradient(45deg,blue,white);
+
+}
+
+.todo-container{
+    width: 1200px;
+    margin: auto;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 4rem 0;
+
+
+
+}
+.todo-container h1{
+    font-size: 3.5rem;
+    font-weight: 1000;
+    margin-bottom: 50px;
+    margin-left: 50px;
+
+}
+
+
+.todo-container input{
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    padding: .8rem 2rem;
+    width: 50%;
+    font-size: 1.1rem;
+    margin-left: 50px;
+    font-weight: 300;    
+
+} 
+.todo-container button{
+    padding: 1rem 3rem;
+    font-size: .8rem;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+
+}
+
+.todo-container button:nth-of-type(2){
+    margin-left: 50px;
+    
+
+
+}
+
+.todo-list{
+    width: 1100px;
+
+}
+
+li{
+    list-style: none;
+}
+
+.todo-list li{
+    margin-left: 50px;
+    margin-top: 50px;
+    border-bottom:1px solid #fff2f2;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-style: italic;
+    
+
+}
+
+.todo-list li p{
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+.todo-list li p i {
+    color: #ff0000;
+
+}
+
+
