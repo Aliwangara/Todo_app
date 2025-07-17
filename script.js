@@ -8,12 +8,15 @@ const clearBtn = document.getElementById('clear-btn');
 
 
 let todo = JSON.parse(localStorage.getItem('addTodo')) || [];
+if(!Array.isArray(todo)){
+    todo =[];
+}
 
 displayTodo()
 
 addItemBtn.addEventListener('click', ()=>{
 
-todo.push(todoEl.value.trim());
+todo.push(todoEl.value.trim().reverse());
 
 
  displayTodo()
@@ -31,13 +34,13 @@ todo.push(todoEl.value.trim());
 function displayTodo(){
     todoItem.innerHTML = ``;
 
-    todo.forEach((todos) => {
+    todo.forEach((todos,index) => {
         const li = document.createElement('li');
 
         li.className = 'todo-list-item'
 
         li.innerHTML = `
-            <p>${todos} <i class="fa-solid fa-trash" onClick = "deleteBtn(0)"></i></p>
+            <p>${todos} <i class="fa-solid fa-trash" onClick = "deleteBtn(${index})"></i></p>
             
         `
         todoItem.appendChild(li)
@@ -54,7 +57,7 @@ function displayTodo(){
 function deleteBtn(index){
 
     todo.splice(index, 1)
-
+        
     
     localStorage.setItem('addTodo', JSON.stringify(todo));
     displayTodo()
@@ -63,7 +66,7 @@ function deleteBtn(index){
 }
 
 clearBtn.addEventListener('click', ()=>{
-    todo =[];
+    todo = [];
     localStorage.setItem('addTodo', JSON.stringify(todo));
     displayTodo()
 
