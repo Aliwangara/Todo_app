@@ -84,14 +84,14 @@ li{
 
 }
 
-.todo-list li p{
+.todo-list li{
     display: flex;
     justify-content: space-between;
 
 
 }
 
-.todo-list li p i {
+.todo-list li  i {
     color: #ff0000;
 
 }
