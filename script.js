@@ -54,7 +54,7 @@ function displayTodo(){
         li.className = 'todo-list-item'
 
         li.innerHTML = `
-            <p class = "edited-text" contentEditable = "true">${todos}</p>
+            <p class = "edited-text" contentEditable = "true">${index+1}. ${todos}</p>
              <i class="fa-solid fa-trash"  onClick = "deleteBtn(${index})"></i>
             
         `;
