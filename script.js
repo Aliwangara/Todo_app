@@ -10,6 +10,7 @@ const clearBtn = document.getElementById('clear-btn');
 let todo = JSON.parse(localStorage.getItem('addTodo')) || [];
 
 
+
 if(!Array.isArray(todo)){
     todo =[];
 }
@@ -17,11 +18,12 @@ if(!Array.isArray(todo)){
 displayTodo()
 
 
-addItemBtn.addEventListener('click', ()=>{
+addItemBtn.addEventListener('click', (e)=>{
 
 const newItem = todoEl.value.trim();
 
  if(newItem !==''){
+
     todo.unshift(newItem)
     localStorage.setItem('addTodo', JSON.stringify(todo))
     displayTodo()
@@ -46,13 +48,36 @@ function displayTodo(){
 
     todo.forEach((todos,index) => {
         const li = document.createElement('li');
+        
 
+        
         li.className = 'todo-list-item'
 
         li.innerHTML = `
-            <p>${todos} <i class="fa-solid fa-trash" onClick = "deleteBtn(${index})"></i></p>
+            <p class = "edited-text" contentEditable = "true">${todos}</p>
+             <i class="fa-solid fa-trash"  onClick = "deleteBtn(${index})"></i>
             
-        `
+        `;
+
+        const textEl = li.querySelector('.edited-text');
+
+        textEl.addEventListener('blur', ()=>{
+            const editedText = textEl.innerHTML.trim();
+            if(editedText){
+                todo[index] = editedText;
+                localStorage.setItem('addTodo', JSON.stringify(todo));
+
+                
+            }
+        });
+
+        textEl.addEventListener('keydown', (e)=>{
+            if(e.key === "Enter"){
+                e.preventDefault();
+                textEl.blur()
+            }
+        })
+
         
         todoItem.appendChild(li)
 
@@ -87,6 +112,7 @@ clearBtn.addEventListener('click', ()=>{
 
 
 })
+
 
 
 
