@@ -67,6 +67,7 @@ function displayTodo(){
 }
 
 function deleteBtn(index){
+    alert(`Are you sure you want to delete this item`)
 
     todo.splice(index, 1)
         
@@ -78,6 +79,8 @@ function deleteBtn(index){
 }
 
 clearBtn.addEventListener('click', ()=>{
+        
+
     todo = [];
     localStorage.setItem('addTodo', JSON.stringify(todo));
     displayTodo()
